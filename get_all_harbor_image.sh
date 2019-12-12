@@ -18,8 +18,8 @@ function getImage {
 for imageName in $(getImage);do
         tagToken=$(curl -iksL -X GET -u $USER:$PASS $harborURL/service/token?account=${USER}\&service=harbor-registry\&scope=repository:${imageName}:pull|grep "token" |awk -F '"' '{print $4}')
         tagList=$(curl -ksL -X GET -H "Content-Type: application/json" -H "Authorization: Bearer $tagToken" ${harborURL}/v2/${imageName}/tags/list | awk -F '[' '{print $2}'| awk -F ']' '{print $1}' | sed 's/"//g')
-        allimageTag=$( echo $tagList | sed 's/,/\n/g')
-        for imageTag in $allimageTag;do
+        allImageTag=$( echo $tagList | sed 's/,/\n/g')
+        for imageTag in $allImageTag;do
                 echo $imageName:$imageTag
         done
 done
