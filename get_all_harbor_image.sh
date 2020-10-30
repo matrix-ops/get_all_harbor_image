@@ -1,6 +1,6 @@
 #!/bin/bash
 #此脚本兼容harbor 1.9.2，其他版本未作兼容性测试
-#Author zhangweilong
+#Author matrixOps
 
 USER="admin"
 #harbor的管理员账号名称
